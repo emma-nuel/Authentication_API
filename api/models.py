@@ -6,6 +6,7 @@ class UserManager(BaseUserManager):
     def create_user(self, username, password, **extra_fields):
         # username = self.username
         user = self.model(username=username, **extra_fields)
+        user.is_active = True
         user.set_password(password)
         user.save()
         return user
